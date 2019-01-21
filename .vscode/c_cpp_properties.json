@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "C:\\arduino-1.8.8\\tools\\**",
+                "C:\\arduino-1.8.8\\hardware\\arduino\\avr\\**",
+                "C:/Users/pierreca/Documents/Arduino/libraries/Adafruit_RGB_LCD_Shield_Library",
+                "C:/Users/pierreca/Documents/Arduino/libraries/FSM",
+                "C:/Users/pierreca/Documents/Arduino/libraries/RTClib",
+                "C:/arduino-1.8.8/hardware/tools/avr/avr/include"
+            ],
+            "forcedInclude": [
+                "C:\\arduino-1.8.8\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
+            ],
+            "intelliSenseMode": "msvc-x64",
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.12.25827/bin/Hostx64/x64/cl.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}
