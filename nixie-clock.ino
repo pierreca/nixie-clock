@@ -28,17 +28,17 @@
 
 #define AWAKE_TIME_SECONDS 1800
 
-#define CS_HOURS_DECADE 10
-#define CS_HOURS_UNIT   9
-#define CS_MIN_DECADE   7
-#define CS_MIN_UNIT     6
+#define CS_HOURS_DECADE 7
+#define CS_HOURS_UNIT   8
+#define CS_MIN_DECADE   9
+#define CS_MIN_UNIT     10
 
 Adafruit_RGBLCDShield lcd = Adafruit_RGBLCDShield();
 RTC_DS3231 rtc;
 exixe hours_dec_tube = exixe(CS_HOURS_DECADE);
-exixe hours_unit_tube = exixe(CS_HOURS_DECADE);
-exixe min_dec_tube = exixe(CS_HOURS_DECADE);
-exixe min_unit_tube = exixe(CS_HOURS_DECADE);
+exixe hours_unit_tube = exixe(CS_HOURS_UNIT);
+exixe min_dec_tube = exixe(CS_MIN_DECADE);
+exixe min_unit_tube = exixe(CS_MIN_UNIT);
 
 char dateString[DATE_STRING_LENGTH + 1];
 char timeString[TIME_STRING_LENGTH + 1];
@@ -64,7 +64,7 @@ void setup()
   lcd.begin(16, 2);
   lcd.setBacklight(WHITE);
 
-  hours_dec_tube.spi_init();
+  min_unit_tube.spi_init();
 
   hours_dec_tube.clear();
   hours_unit_tube.clear();
@@ -496,12 +496,34 @@ void setTimeExit()
 
 void show_time_tubes(uint8_t hours, uint8_t minutes)
 {
+  Serial.println("--- show_time_tubes");
+  Serial.print("HOURS: ");
+  Serial.print(hours, DEC);
+  Serial.println("");
+  Serial.print("MINUTES: ");
+  Serial.print(minutes, DEC);
+  Serial.println("");
+  Serial.println("---------");
   uint8_t hours_dec = hours / 10;
   uint8_t hours_unit = hours % 10;
 
-  uint8_t min_dec = hours / 10;
-  uint8_t min_unit = hours % 10;
+  uint8_t min_dec = minutes / 10;
+  uint8_t min_unit = minutes % 10;
 
+  Serial.print("hours: ");
+  Serial.print(hours_dec, DEC);
+  Serial.print(".");
+  Serial.print(hours_unit, DEC);
+  Serial.println("");
+
+  Serial.print("minutes: ");
+  Serial.print(min_dec, DEC);
+  Serial.print(".");
+  Serial.print(min_unit, DEC);
+  Serial.println("");
+  Serial.println("---------");
+  Serial.println("");
+  
   hours_dec_tube.show_digit(hours_dec, 127, 0);
   hours_unit_tube.show_digit(hours_unit, 127, 0);
   min_dec_tube.show_digit(min_dec, 127, 0);

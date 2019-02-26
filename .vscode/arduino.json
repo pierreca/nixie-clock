@@ -1,4 +1,5 @@
 {
     "board": "arduino:avr:uno",
-    "sketch": "nixie-clock.ino"
+    "sketch": "nixie-clock.ino",
+    "port": "COM3"
 }
